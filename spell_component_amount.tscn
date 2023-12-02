@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dirwovc3x8v5i"]
+
+[ext_resource type="Script" path="res://Code/SpellComponents/SpellComponentAmount.gd" id="1_yxa75"]
+
+[node name="SpellComponentAmount" type="Node3D"]
+script = ExtResource("1_yxa75")

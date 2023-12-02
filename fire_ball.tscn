@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5iqtm7jiw17e"]
+
+[ext_resource type="Script" path="res://Code/PageOFSpellBook.gd" id="1_jgaho"]
+[ext_resource type="PackedScene" uid="uid://dirwovc3x8v5i" path="res://spell_component_amount.tscn" id="2_o5uo1"]
+
+[node name="FireBall" type="Node3D" node_paths=PackedStringArray("AmountSpellComponent")]
+script = ExtResource("1_jgaho")
+Name = "Fire Ball"
+Type = "Fire"
+AmountSpellComponent = [NodePath("SpellComponentAmount")]
+
+[node name="SpellComponentAmount" parent="." instance=ExtResource("2_o5uo1")]
+TypeOfSpellProperty = "Amount"
+LevelOfSpellProperty = 1.0
