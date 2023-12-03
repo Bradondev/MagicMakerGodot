@@ -1,5 +1,6 @@
 extends SpellComponent 
 
+var  Amount
 
-func  _ready():
-	print(LevelOfSpellProperty)
+func  CreateSpell():
+	pass

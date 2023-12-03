@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://1u6m2m5g7w60"]
+
+[ext_resource type="Script" path="res://Spell.gd" id="1_ertmn"]
+
+[node name="Spell" type="Node3D"]
+script = ExtResource("1_ertmn")
+TypeOfProjectile = "bullet"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
