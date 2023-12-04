@@ -3,8 +3,10 @@
 [ext_resource type="Script" path="res://Code/SpellBook.gd" id="1_manji"]
 [ext_resource type="PackedScene" uid="uid://b5iqtm7jiw17e" path="res://fire_ball.tscn" id="2_vxi6i"]
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("SpellsInBook")]
+[node name="Fire Book" type="Node3D" node_paths=PackedStringArray("SpellsInBook")]
 script = ExtResource("1_manji")
 SpellsInBook = [NodePath("FireBall")]
 
 [node name="FireBall" parent="." instance=ExtResource("2_vxi6i")]
+
+[editable path="FireBall"]

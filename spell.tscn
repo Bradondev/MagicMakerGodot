@@ -1,9 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://1u6m2m5g7w60"]
+[gd_scene load_steps=4 format=3 uid="uid://1u6m2m5g7w60"]
 
 [ext_resource type="Script" path="res://Spell.gd" id="1_ertmn"]
+[ext_resource type="PackedScene" uid="uid://ctct5isn2ljet" path="res://uploads_files_2705643_Fireball.glb" id="2_4iehn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k0tvn"]
+radius = 0.64
 
 [node name="Spell" type="Node3D"]
 script = ExtResource("1_ertmn")
 TypeOfProjectile = "bullet"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="uploads_files_2705643_Fireball" parent="." instance=ExtResource("2_4iehn")]
+
+[node name="Area3D" type="Area3D" parent="uploads_files_2705643_Fireball"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="uploads_files_2705643_Fireball/Area3D"]
+shape = SubResource("SphereShape3D_k0tvn")

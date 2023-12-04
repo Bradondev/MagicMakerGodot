@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://2oxdgu03lnbk"]
+[gd_scene load_steps=6 format=3 uid="uid://2oxdgu03lnbk"]
 
 [ext_resource type="PackedScene" uid="uid://8oy3xm2sff8" path="res://addons/character-controller/fps/fps_controller_3d.tscn" id="1_fbpun"]
 [ext_resource type="Script" path="res://addons/character-controller/example/main/player.gd" id="2_8r0nc"]
 [ext_resource type="Environment" uid="uid://b3cn01u84faiy" path="res://addons/character-controller/example/main/underwater.tres" id="3_dxksd"]
+[ext_resource type="PackedScene" uid="uid://bv7ox102ox6bp" path="res://SpellBook.tscn" id="4_ubbkc"]
 [ext_resource type="PackedScene" path="res://addons/character-controller/example/main/audios/player_audios.tscn" id="4_ux8kv"]
 
 [node name="Player" instance=ExtResource("1_fbpun")]
@@ -17,7 +18,9 @@ input_crouch_action_name = "move_crouch"
 input_fly_mode_action_name = "move_fly_mode"
 underwater_env = ExtResource("3_dxksd")
 
-[node name="Sprint Ability 3D" parent="." index="3"]
+[node name="Node3D" parent="." index="0" instance=ExtResource("4_ubbkc")]
+
+[node name="Sprint Ability 3D" parent="." index="4"]
 speed_multiplier = 2.0
 
-[node name="Player Audios" parent="." index="9" instance=ExtResource("4_ux8kv")]
+[node name="Player Audios" parent="." index="10" instance=ExtResource("4_ux8kv")]

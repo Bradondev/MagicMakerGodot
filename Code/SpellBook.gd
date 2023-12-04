@@ -8,5 +8,7 @@ class_name SpellBook extends Node3D
 
 
 func _process(delta):
+	SpellsInBook[0].CurrentSpell = true
 	if Input.is_action_just_pressed("LeftClick"):
-		print(SpellsInBook[CurrentSpell].AmountSpellComponent)
+		print("usedSpellbooks")
+		SpellsInBook[0].UseSpell()
