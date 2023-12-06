@@ -9,4 +9,9 @@ SpellsInBook = [NodePath("FireBall")]
 
 [node name="FireBall" parent="." instance=ExtResource("2_vxi6i")]
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
 [editable path="FireBall"]

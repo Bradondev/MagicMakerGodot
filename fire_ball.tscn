@@ -3,17 +3,27 @@
 [ext_resource type="Script" path="res://Code/PageOFSpellBook.gd" id="1_jgaho"]
 [ext_resource type="PackedScene" uid="uid://d3ih00jqql7fo" path="res://spell_component.tscn" id="2_agts3"]
 
-[node name="FireBall" type="Node3D" node_paths=PackedStringArray("AmountSpellComponent")]
+[node name="FireBall" type="Node3D" node_paths=PackedStringArray("CreationSpellComponent")]
 script = ExtResource("1_jgaho")
 Name = "Fire Ball"
 ELement = "Fire"
-AmountSpellComponent = [NodePath("SpellComponent"), NodePath("SpellComponent2")]
+CreationSpellComponent = [NodePath("SpellComponent"), NodePath("SpellComponent2"), NodePath("SpellComponent3"), NodePath("SpellComponent4")]
 
 [node name="SpellComponent" parent="." instance=ExtResource("2_agts3")]
 TypeOfSpellProperty = "Amount"
 Amount = 4
 
 [node name="SpellComponent2" parent="." instance=ExtResource("2_agts3")]
-TypeOfSpellProperty = "Amount"
-Amount = 1
-Size = Vector3i(0, 2, 0)
+TypeOfSpellProperty = "Size"
+CastType = "Single Click"
+
+[node name="SpellComponent3" parent="." instance=ExtResource("2_agts3")]
+TypeOfSpellProperty = "CastType"
+Size = 2
+CastType = "Hold"
+
+[node name="SpellComponent4" parent="." instance=ExtResource("2_agts3")]
+TypeOfSpellProperty = "CastTime"
+Size = 2
+CastTime = 2
+CastType = "Hold"

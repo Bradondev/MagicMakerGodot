@@ -1,10 +1,13 @@
 class_name Projectile extends Node3D
 
-@onready var ProjectileMesh = $MeshInstance3D
+var Shape 
+var Position
+@onready var Scale 
+var velocity = Vector3.ZERO
+@export var g = Vector3.DOWN * 0
 var CanMove = false
 var grav = 0
-
-
+var speed = 0
 @export_enum("bullet", "Ball","Wall","Area") var TypeOfProjectile: String
 
 
@@ -19,9 +22,25 @@ var Damage = 10
 var Speed = 10
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	SetScale()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	 # Move the bullet to the right (adjust as needed)
+	
+	transform.origin += velocity * delta
+	
+	# Remove the bullet when it goes off-screen
+func SetValues():
+	$Area3D/CollisionShape3D.shape = Shape
+	
+func _on_area_3d_area_entered(area):
+	print("Spell hit some thing")
+	queue_free()
+	
+func SetScale():
+	$".".scale.x = Scale
+	$".".scale.y = Scale
+	$".".scale.z = Scale
+

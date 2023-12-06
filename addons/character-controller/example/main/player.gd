@@ -12,7 +12,8 @@ class_name Player
 ## The input process only happens when mouse is in capture mode.
 ## This script also adds submerged and emerged signals to change the 
 ## [Environment] when we are in the water.
-
+@onready var First = $Normalmark
+@onready var Head = $Head
 @export var input_back_action_name := "move_backward"
 @export var input_forward_action_name := "move_forward"
 @export var input_left_action_name := "move_left"
@@ -30,7 +31,6 @@ func _ready():
 	setup()
 	emerged.connect(_on_controller_emerged.bind())
 	submerged.connect(_on_controller_subemerged.bind())
-
 
 func _physics_process(delta):
 	var is_valid_input := Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED

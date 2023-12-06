@@ -1,8 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3ih00jqql7fo"]
+[gd_scene load_steps=2 format=3 uid="uid://d3ih00jqql7fo"]
 
 [ext_resource type="Script" path="res://Code/SpellComponents/SpellComponent.gd" id="1_aaj70"]
-[ext_resource type="PackedScene" uid="uid://ctct5isn2ljet" path="res://uploads_files_2705643_Fireball.glb" id="2_6uqua"]
 
 [node name="SpellComponent" type="Node3D"]
+visible = false
 script = ExtResource("1_aaj70")
-Shape = ExtResource("2_6uqua")

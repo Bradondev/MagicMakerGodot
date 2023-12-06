@@ -4,3 +4,5 @@
 
 [node name="PageSpellBook" type="Node3D"]
 script = ExtResource("1_3026x")
+
+[node name="Timer" type="Timer" parent="."]

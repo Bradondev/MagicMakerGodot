@@ -18,9 +18,16 @@ input_crouch_action_name = "move_crouch"
 input_fly_mode_action_name = "move_fly_mode"
 underwater_env = ExtResource("3_dxksd")
 
-[node name="Node3D" parent="." index="0" instance=ExtResource("4_ubbkc")]
-
-[node name="Sprint Ability 3D" parent="." index="4"]
+[node name="Sprint Ability 3D" parent="." index="3"]
 speed_multiplier = 2.0
 
-[node name="Player Audios" parent="." index="10" instance=ExtResource("4_ux8kv")]
+[node name="Node3D" parent="Head" index="0" instance=ExtResource("4_ubbkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.64, 0)
+
+[node name="Player Audios" parent="." index="9" instance=ExtResource("4_ux8kv")]
+
+[node name="Normalmark" type="Marker3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.853072, -1.7616)
+
+[editable path="Head/Node3D"]
+[editable path="Head/Node3D/FireBall"]
