@@ -7,11 +7,7 @@
 script = ExtResource("1_jgaho")
 Name = "Fire Ball"
 ELement = "Fire"
-CreationSpellComponent = [NodePath("SpellComponent"), NodePath("SpellComponent2"), NodePath("SpellComponent3"), NodePath("SpellComponent4")]
-
-[node name="SpellComponent" parent="." instance=ExtResource("2_agts3")]
-TypeOfSpellProperty = "Amount"
-Amount = 4
+CreationSpellComponent = [NodePath("SpellComponent2"), NodePath("SpellComponent3"), NodePath("SpellComponent4"), NodePath("SpellComponent5")]
 
 [node name="SpellComponent2" parent="." instance=ExtResource("2_agts3")]
 TypeOfSpellProperty = "Size"
@@ -20,10 +16,20 @@ CastType = "Single Click"
 [node name="SpellComponent3" parent="." instance=ExtResource("2_agts3")]
 TypeOfSpellProperty = "CastType"
 Size = 2
-CastType = "Hold"
+CastTime = 1.0
+CastType = "While Hold"
 
 [node name="SpellComponent4" parent="." instance=ExtResource("2_agts3")]
-TypeOfSpellProperty = "CastTime"
+TypeOfSpellProperty = "FireRate"
 Size = 2
-CastTime = 2
-CastType = "Hold"
+FireRate = 0.1
+
+[node name="SpellComponent5" parent="." instance=ExtResource("2_agts3")]
+TypeOfSpellProperty = "Type of Amount"
+Amount = 6
+CastTime = 0.0
+TypeOfAmount = "One by one"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpg3nn725jvsh"]
+
+[ext_resource type="Script" path="res://OnhitArea.gd" id="1_0qg2n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o0fk4"]
+
+[node name="OnhitArea" type="Area3D"]
+collision_layer = 15
+script = ExtResource("1_0qg2n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_o0fk4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

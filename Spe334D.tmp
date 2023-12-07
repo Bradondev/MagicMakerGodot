@@ -9,15 +9,6 @@ SpellsInBook = [NodePath("FireBall")]
 
 [node name="FireBall" parent="." instance=ExtResource("2_vxi6i")]
 
-[node name="SpellComponent2" parent="FireBall" index="0"]
-visible = true
-
-[node name="SpellComponent3" parent="FireBall" index="1"]
-visible = true
-
-[node name="SpellComponent4" parent="FireBall" index="2"]
-visible = true
-
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 

@@ -28,19 +28,23 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	 # Move the bullet to the right (adjust as needed)
-	
+	velocity += delta * g
 	transform.origin += velocity * delta
 	
 	# Remove the bullet when it goes off-screen
 func SetValues():
 	$Area3D/CollisionShape3D.shape = Shape
 	
-func _on_area_3d_area_entered(area):
-	print("Spell hit some thing")
-	queue_free()
 	
 func SetScale():
 	$".".scale.x = Scale
 	$".".scale.y = Scale
 	$".".scale.z = Scale
+
+
+
+func _on_area_3d_body_entered(body):
+	print(body)
+	queue_free()
+	
 

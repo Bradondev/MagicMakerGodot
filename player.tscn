@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" path="res://addons/character-controller/example/main/audios/player_audios.tscn" id="4_ux8kv"]
 
 [node name="Player" instance=ExtResource("1_fbpun")]
+collision_layer = 2
 script = ExtResource("2_8r0nc")
 input_back_action_name = "move_backward"
 input_forward_action_name = "move_forward"
