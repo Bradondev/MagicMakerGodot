@@ -119,6 +119,9 @@ material_override = ExtResource("3_o2nsj")
 [node name="Player" parent="." instance=ExtResource("5_dl51b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62268e-06, 6, 13)
 
+[node name="Head Bob" parent="Player/Head" index="2"]
+step_bob_enabled = false
+
 [node name="Area3D" parent="." instance=ExtResource("6_fmfa1")]
 transform = Transform3D(0.491574, 0, 0, 0, 1, 0, 0, 0, 0.555284, 0, -3.71645, 5.93584)
 

@@ -34,7 +34,9 @@ func _ready():
 
 func _physics_process(delta):
 	var is_valid_input := Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
-	
+	if Input.is_action_just_pressed( "LeftClick"):
+		$Head/Camera/RayCast3D.enabled = true
+		$Head/Camera/RayCast3D/Timer.start()
 	if is_valid_input:
 		if Input.is_action_just_pressed(input_fly_mode_action_name):
 			fly_ability.set_active(not fly_ability.is_actived())
@@ -63,3 +65,7 @@ func _on_controller_emerged():
 
 func _on_controller_subemerged():
 	camera.environment = underwater_env
+
+
+func _on_timer_timeout():
+	$Head/Camera/RayCast3D.enabled = false

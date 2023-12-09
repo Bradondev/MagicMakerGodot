@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtab5h0d56que"]
+
+[ext_resource type="Script" path="res://Code/SpawnArea.gd" id="1_s3y3y"]
+
+[node name="SpawnArea" type="Node3D"]
+script = ExtResource("1_s3y3y")
+TypeOfSpellProperty = "SpawnArea"

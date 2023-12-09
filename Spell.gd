@@ -4,9 +4,10 @@ var Shape
 var Position
 @onready var Scale 
 var velocity = Vector3.ZERO
-@export var g = Vector3.DOWN * 0
-var CanMove = false
 var grav = 0
+var g = Vector3.DOWN * grav
+var CanMove = false
+
 var speed = 0
 @export_enum("bullet", "Ball","Wall","Area") var TypeOfProjectile: String
 

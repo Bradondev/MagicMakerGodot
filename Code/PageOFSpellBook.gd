@@ -10,6 +10,9 @@ var Amount = 1
 var TypeOfAmount = ""
 var SpellThatsGettingShoot
 var FireRate = 1.0
+var SetPos = false
+var DisPlacement : Vector3
+
 class NewSpell:
 	var CastType : String
 	var Damage = 0
@@ -17,9 +20,11 @@ class NewSpell:
 	var ProjectileSize = 1
 	var ProjectileShape : Shape3D
 	var Element :String
-	var SpawnArea : Vector3
+	var SpawnArea :Vector3
+	var Speed = 0
 	var TypeOfSpell : String
 	var OnHitEffect : Node3D
+	var Grav = 0
 @export var Name = ""
 @export_enum("Air", "Fire", "Water","Earth","Light","Dark", "Null") var ELement: String
 @export var CreationSpellComponent : Array[SpellComponent]
@@ -38,21 +43,24 @@ var TempShape : String
 var TempElement :String
 var TempSpawnArea :String
 var  TempProjectile : String
-
+@onready var Book = get_parent()
 func  _ready():
 	$".".name = Name
+	print(Book)
 	print(AllComponents, "bruh")
 	AllComponents += CreationSpellComponent +AmountSpellComponent + MovementSpellComponent + OnHitSpellComponent + ExtraSpellComponent
-	print((CreateNewSpell(AllComponents)))
 func _process(delta):
 	pass
 func UseSpell():
-	if TypeOfAmount =="All at once":
-			FireRate = 0
-			print("yers")
+	
+	CreateNewSpell(AllComponents)
 	for Component in ObjectsCreated:
-			ShootSpell(Component)
-			await get_tree().create_timer(FireRate).timeout	
+		if SetPos:
+			Component.SpawnArea = Book.LookAtPoint  + DisPlacement
+		else:
+			Component.SpawnArea = Player.global_position + DisPlacement
+		ShootSpell(Component)
+		await get_tree().create_timer(FireRate).timeout	
 func CreateNewSpell(AllComponentss: Array [SpellComponent]):
 	print_debug(ObjectsCreated )
 	if ObjectsCreated.is_empty():
@@ -70,19 +78,31 @@ func CreateNewSpell(AllComponentss: Array [SpellComponent]):
 			elif Component.TypeOfSpellProperty == "TypeOfSpell":
 				TempNewSpell.TypeOfSpell = Component.TypeOfSpell
 			elif Component.TypeOfSpellProperty == "SpawnArea":
-				TempNewSpell.SpawnArea += Component.SpawnArea
+				if Component.SpawnArea == "Head":
+					TempNewSpell.SpawnArea = Player.global_position + Component.displalcement
+				elif Component.SpawnArea == "Looked at point":
+					TempNewSpell.SpawnArea = Book.LookAtPoint  + Component.displalcement
+					DisPlacement = Component.displalcement
+					SetPos = true
 				print(Component.SpawnArea )
 			elif Component.TypeOfSpellProperty == "OnHitEffect":
 				TempNewSpell.OnHitEffect = Component.OnHitEffect
 			elif Component.TypeOfSpellProperty == "CastType":
 				CastType = Component.CastType
 				CastTime += Component.CastTime
-			elif Component.TypeOfSpellProperty == "FireRate":
-				FireRate = Component.FireRate
 			elif Component.TypeOfSpellProperty == "Type of Amount":
 				TypeOfAmount = Component.TypeOfAmount
 				TempNewSpell.AmountOfProjectiles  += Component.Amount
 				Amount += Component.Amount
+				FireRate = Component.FireRate
+			elif Component.TypeOfSpellProperty == "Type of Movement":
+				if Component.TypeOfMovement == "Forward":
+					TempNewSpell.Speed += Component.Speed
+				elif Component.TypeOfMovement == "Up":
+					TempNewSpell.Grav -= Component.Speed
+				elif  Component.TypeOfMovement == "Down":
+					TempNewSpell.Grav += Component.Speed
+				
 		if Amount > 1:
 			while Amount != 1:
 				ObjectsCreated.append(TempNewSpell)
@@ -105,15 +125,16 @@ func ShootSpell(SpellStats):
 	
 	SpellThatsGettingShoot = Spell.instantiate()
 	SpellThatsGettingShoot.Scale  = SpellStats.ProjectileSize
-	SpellThatsGettingShoot.position = Player.global_position 
-	SpellThatsGettingShoot.position += SpellStats.SpawnArea
-	SpellThatsGettingShoot.transform.basis = Player.global_transform.basis
-	SpellThatsGettingShoot.velocity = -SpellThatsGettingShoot.transform.basis.z * 10
+	SpellThatsGettingShoot.position = SpellStats.SpawnArea
+	if SetPos:
+		pass
+	else :
+		SpellThatsGettingShoot.transform.basis = Player.global_transform.basis
+	SpellThatsGettingShoot.velocity = -SpellThatsGettingShoot.transform.basis.z * SpellStats.Speed
+	SpellThatsGettingShoot.g = -SpellThatsGettingShoot.transform.basis.y * SpellStats.Grav
+	print(SpellThatsGettingShoot.position)
 	get_tree().get_root().get_node("Level").add_child(SpellThatsGettingShoot)
 	
-func  GetPosition(Component):
-	pass
-
 
 
 func _on_timer_timeout():

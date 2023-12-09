@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq70iurbh5w65"]
+
+[ext_resource type="Script" path="res://Code/SpellComponents/Size.gd" id="1_pbyfi"]
+
+[node name="Size" type="Node3D"]
+script = ExtResource("1_pbyfi")
+TypeOfSpellProperty = "Size"

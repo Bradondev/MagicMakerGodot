@@ -7,7 +7,10 @@ class_name SpellBook extends Node3D
 @export var SpellsInBook : Array[SpellBookPage]
 var CanUseSpell = true
 var IfIsCastTimeHold = false
+@onready var LookAtPoint : Vector3
 func _process(delta):
+	if $"../Camera/RayCast3D".get_collider():
+		LookAtPoint = $"../Camera/RayCast3D".get_collision_point()
 	SpellsInBook[0].CurrentSpell = true
 	SpellTimer.wait_time = SpellsInBook[0].CastTime
 	if Input.is_action_just_pressed("LeftClick") and SpellsInBook[0].CastType == "Single Click":

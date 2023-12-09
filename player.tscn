@@ -25,10 +25,24 @@ speed_multiplier = 2.0
 [node name="Node3D" parent="Head" index="0" instance=ExtResource("4_ubbkc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.64, 0)
 
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.792)
+target_position = Vector3(0, -60, 0)
+debug_shape_thickness = 3
+
+[node name="Timer" type="Timer" parent="Head/Camera/RayCast3D" index="0"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Head Bob" parent="Head" index="2"]
+jump_bob_enabled = false
+
 [node name="Player Audios" parent="." index="9" instance=ExtResource("4_ux8kv")]
 
 [node name="Normalmark" type="Marker3D" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.853072, -1.7616)
+
+[connection signal="timeout" from="Head/Camera/RayCast3D/Timer" to="." method="_on_timer_timeout"]
 
 [editable path="Head/Node3D"]
 [editable path="Head/Node3D/FireBall"]

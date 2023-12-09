@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://da2ruc3xs273e"]
+
+[ext_resource type="Script" path="res://Code/SpellComponents/CastType.gd" id="1_8qh78"]
+
+[node name="CastType" type="Node3D"]
+script = ExtResource("1_8qh78")
+CastType = "While Hold"
+TypeOfSpellProperty = "CastType"

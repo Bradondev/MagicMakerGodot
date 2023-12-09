@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh2rvhylasx4x"]
+
+[ext_resource type="Script" path="res://Code/SpellComponents/TypeOfAmount.gd" id="1_h4dyb"]
+
+[node name="TypeOfAmount" type="Node3D"]
+script = ExtResource("1_h4dyb")
+TypeOfAmount = null
+Amount = null
+FireRate = null
+TypeOfSpellProperty = "Type of Amount"
+LevelOfSpellProperty = null
+Element = null
+Damage = null
